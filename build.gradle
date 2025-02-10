@@ -15,6 +15,17 @@ repositories {
     maven { url = "https://maven.parchmentmc.org" }
     maven { url = "https://maven.terraformersmc.com/" }
     maven { url = "https://maven.isxander.dev/releases" }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
 }
 
 dependencies {
@@ -26,8 +37,11 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:${property("fabric_version")}"
+    include(implementation("com.moulberry:mixinconstraints:${project.mixinconstraints_version}"))
     modImplementation "com.terraformersmc:modmenu:${property("modmenu_version")}"
     modImplementation "dev.isxander:yet-another-config-lib:${property("yacl_version")}"
+    modCompileOnly "maven.modrinth:tough-as-nails:${property("toughasnails_version")}"
+    //modImplementation "maven.modrinth:tough-as-nails:${property("toughasnails_version")}"
 }
 
 processResources {

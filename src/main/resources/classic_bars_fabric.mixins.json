@@ -4,8 +4,12 @@
   "package": "me.pajic.classic_bars_fabric.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "PlayerListMixin",
+    "ServerPlayerMixin",
+    "compat.ThirstOverlayRendererMixin"
   ],
   "client": [
+    "GuiMixin"
   ],
   "injectors": {
     "defaultRequire": 1
