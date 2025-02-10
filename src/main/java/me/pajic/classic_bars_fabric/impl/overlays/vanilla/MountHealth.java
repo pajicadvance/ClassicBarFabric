@@ -2,6 +2,7 @@ package me.pajic.classic_bars_fabric.impl.overlays.vanilla;
 
 import me.pajic.classic_bars_fabric.config.ModConfig;
 import me.pajic.classic_bars_fabric.impl.BarOverlayImpl;
+import me.pajic.classic_bars_fabric.util.Color;
 import me.pajic.classic_bars_fabric.util.ColorUtils;
 import me.pajic.classic_bars_fabric.util.HealthEffect;
 import me.pajic.classic_bars_fabric.util.ModUtils;
@@ -57,6 +58,7 @@ public class MountHealth extends BarOverlayImpl {
     double f = xStart + (rightHandSide() ? BarOverlayImpl.WIDTH - barWidth : 0);
     //draw portion of bar based on mountHealth remaining
     renderPartialBar(graphics,f + 2, yStart + 2, barWidth);
+    Color.reset();
   }
 
   @Override

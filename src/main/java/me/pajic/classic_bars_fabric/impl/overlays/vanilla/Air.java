@@ -31,6 +31,7 @@ public class Air extends BarOverlayImpl {
     Color color = getPrimaryBarColor(0,player);
     color.color2Gl();
     renderPartialBar(graphics,f + 2, yStart + 2,barWidth);
+    Color.reset();
   }
 
   @Override

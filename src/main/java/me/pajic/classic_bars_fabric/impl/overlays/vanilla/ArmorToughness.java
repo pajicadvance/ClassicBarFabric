@@ -62,6 +62,7 @@ public class ArmorToughness extends BarOverlayImpl {
                 renderFullBar(graphics, xStart + 2, yStart + 2);
             }
         }
+        Color.reset();
     }
 
     @Override

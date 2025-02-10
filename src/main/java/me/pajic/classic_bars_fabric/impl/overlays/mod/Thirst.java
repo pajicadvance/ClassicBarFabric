@@ -215,7 +215,7 @@ public class Thirst extends BarOverlayImpl {
         if (ModConfig.showThirstExhaustionOverlay /*&& Message.presentOnServer*/) {
             drawExhaustion(graphics, player, xStart, yStart, exhaustionLevel, maxExhaustionLevel);
         }
-
+        Color.reset();
     }
 
     @Override

@@ -79,6 +79,7 @@ public class Armor extends BarOverlayImpl {
                 renderPartialBar(graphics, xStart + 2, yStart + 2, ModUtils.getWidth(armor - index * 20, 20));
             }
         }
+        Color.reset();
     }
 
     @Override

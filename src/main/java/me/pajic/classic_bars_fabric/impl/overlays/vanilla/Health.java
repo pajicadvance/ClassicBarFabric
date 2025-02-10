@@ -82,6 +82,7 @@ public class Health extends BarOverlayImpl {
       RenderSystem.setShaderColor(0, .5f, 0, .5f);
       ModUtils.drawTexturedModalRect(graphics,f + 1, yStart + 1, 1, 36, barWidth, 7);
     }
+    Color.reset();
   }
 
   @Override

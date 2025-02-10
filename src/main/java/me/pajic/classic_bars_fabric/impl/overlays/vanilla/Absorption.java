@@ -59,6 +59,7 @@ public class Absorption extends BarOverlayImpl {
                 renderPartialBar(graphics, xStart + 2, yStart + 2, ModUtils.getWidth(absorb % maxHealth, maxHealth));
             }
         }
+        Color.reset();
     }
 
     @Override
