@@ -6,7 +6,6 @@ import me.pajic.classic_bars_fabric.impl.BarOverlayImpl;
 import me.pajic.classic_bars_fabric.util.Color;
 import me.pajic.classic_bars_fabric.util.ColorUtils;
 import me.pajic.classic_bars_fabric.util.ModUtils;
-import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
@@ -19,7 +18,6 @@ import toughasnails.init.ModTags;
 public class Thirst extends BarOverlayImpl {
 
     public static final String NAME = "thirst_level";
-    public static final ResourceLocation OVERLAY_ID = ResourceLocation.fromNamespaceAndPath("toughasnails", NAME);
 
     public static final double MAX_THIRST_LEVEL = 20;
     public static final double MAX_HYDRATION_LEVEL = 1.0;
@@ -190,7 +188,7 @@ public class Thirst extends BarOverlayImpl {
     }
 
     @Override
-    public void renderBar(GuiGraphics graphics, DeltaTracker deltaTracker, Player player, int screenWidth, int screenHeight, int vOffset) {
+    public void renderBar(GuiGraphics graphics, Player player, int screenWidth, int screenHeight, int vOffset) {
         double maxExhaustionLevel = toughasnails.init.ModConfig.thirst.thirstExhaustionThreshold;
 
         IThirst thirstData = ThirstHelper.getThirst(player);

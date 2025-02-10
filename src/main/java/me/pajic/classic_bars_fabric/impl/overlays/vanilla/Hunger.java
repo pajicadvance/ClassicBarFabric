@@ -6,7 +6,6 @@ import me.pajic.classic_bars_fabric.impl.BarOverlayImpl;
 import me.pajic.classic_bars_fabric.util.Color;
 import me.pajic.classic_bars_fabric.util.ColorUtils;
 import me.pajic.classic_bars_fabric.util.ModUtils;
-import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceLocation;
@@ -22,7 +21,7 @@ public class Hunger extends BarOverlayImpl {
   }
 
   @Override
-  public void renderBar(GuiGraphics matrices, DeltaTracker deltaTracker, Player player, int screenWidth, int screenHeight, int vOffset) {
+  public void renderBar(GuiGraphics matrices, Player player, int screenWidth, int screenHeight, int vOffset) {
     double hunger = player.getFoodData().getFoodLevel();
     double maxHunger = 20;//HungerHelper.getMaxHunger(player);
     

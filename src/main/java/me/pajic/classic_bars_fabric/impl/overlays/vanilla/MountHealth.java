@@ -5,7 +5,6 @@ import me.pajic.classic_bars_fabric.impl.BarOverlayImpl;
 import me.pajic.classic_bars_fabric.util.ColorUtils;
 import me.pajic.classic_bars_fabric.util.HealthEffect;
 import me.pajic.classic_bars_fabric.util.ModUtils;
-import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
@@ -27,7 +26,7 @@ public class MountHealth extends BarOverlayImpl {
   }
 
   @Override
-  public void renderBar(GuiGraphics graphics, DeltaTracker deltaTracker, Player player, int screenWidth, int screenHeight, int vOffset) {
+  public void renderBar(GuiGraphics graphics, Player player, int screenWidth, int screenHeight, int vOffset) {
     //Push to avoid lasting changes
     int updateCounter = ModUtils.mc.gui.getGuiTicks();
 

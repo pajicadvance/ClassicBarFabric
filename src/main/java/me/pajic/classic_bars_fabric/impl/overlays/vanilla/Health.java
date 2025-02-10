@@ -7,7 +7,6 @@ import me.pajic.classic_bars_fabric.util.Color;
 import me.pajic.classic_bars_fabric.util.ColorUtils;
 import me.pajic.classic_bars_fabric.util.HealthEffect;
 import me.pajic.classic_bars_fabric.util.ModUtils;
-import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
@@ -23,7 +22,7 @@ public class Health extends BarOverlayImpl {
   }
 
   @Override
-  public void renderBar(GuiGraphics graphics, DeltaTracker deltaTracker, Player player, int screenWidth, int screenHeight, int vOffset) {
+  public void renderBar(GuiGraphics graphics, Player player, int screenWidth, int screenHeight, int vOffset) {
     int updateCounter = ModUtils.mc.gui.getGuiTicks();
 
     double health = player.getHealth();

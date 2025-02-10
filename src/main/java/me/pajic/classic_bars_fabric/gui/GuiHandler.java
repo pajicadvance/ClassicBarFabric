@@ -6,10 +6,7 @@ import me.pajic.classic_bars_fabric.config.ModConfig;
 import me.pajic.classic_bars_fabric.impl.overlays.mod.Thirst;
 import me.pajic.classic_bars_fabric.impl.overlays.vanilla.*;
 import me.pajic.classic_bars_fabric.util.ModUtils;
-import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
-import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.LayeredDraw;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 
@@ -20,7 +17,6 @@ public class GuiHandler {
     public static void initGuiHandler() {
         setupOverlays();
         setupSides();
-        HudRenderCallback.EVENT.register(GuiBars.INSTANCE::render);
     }
 
     public static int rightHeight = 39;
@@ -42,36 +38,30 @@ public class GuiHandler {
         });
     }
 
-    public static class GuiBars implements LayeredDraw.Layer {
-        protected static final GuiBars INSTANCE = new GuiBars();
+    public static void render(GuiGraphics guiGraphics) {
+        Entity entity = ModUtils.mc.getCameraEntity();
+        if (!(entity instanceof Player player)) return;
+        if (player.getAbilities().instabuild || player.isSpectator()) return;
+        ModUtils.mc.getProfiler().push("classicbars_hud");
 
-        @Override
-        public void render(GuiGraphics guiGraphics, DeltaTracker deltaTracker) {
-            Entity entity = ModUtils.mc.getCameraEntity();
-            if (!(entity instanceof Player player)) return;
-            if (player.getAbilities().instabuild || player.isSpectator()) return;
-            ModUtils.mc.getProfiler().push("classicbars_hud");
+        rightHeight = 39;
+        leftHeight = 39;
+        int screenWidth = ModUtils.mc.getWindow().getGuiScaledWidth();
+        int screenHeight = ModUtils.mc.getWindow().getGuiScaledHeight();
 
-            rightHeight = 39;
-            leftHeight = 39;
-            int screenWidth = ModUtils.mc.getWindow().getGuiScaledWidth();
-            int screenHeight = ModUtils.mc.getWindow().getGuiScaledHeight();
-
-            for (BarOverlay overlay : all) {
-                boolean rightHand = overlay.rightHandSide();
-                try {
-                    overlay.render(guiGraphics, deltaTracker, player, screenWidth, screenHeight, getOffset(rightHand));
-                } catch (Error e) {
-                    Main.LOGGER.error("Removing broken overlay {}", overlay.name());
-                    Main.LOGGER.error(e);
-                    errored.add(overlay);
-                }
+        for (BarOverlay overlay : all) {
+            boolean rightHand = overlay.rightHandSide();
+            try {
+                overlay.render(guiGraphics, player, screenWidth, screenHeight, getOffset(rightHand));
+            } catch (Error e) {
+                Main.LOGGER.error("Removing broken overlay {}", overlay.name());
+                Main.LOGGER.error(e);
+                errored.add(overlay);
             }
-            if (!errored.isEmpty()) all.removeAll(errored);
-
-            // mc.getTextureManager().bind(GuiComponent.GUI_ICONS_LOCATION);
-            ModUtils.mc.getProfiler().pop();
         }
+        if (!errored.isEmpty()) all.removeAll(errored);
+
+        ModUtils.mc.getProfiler().pop();
     }
 
     public static void increment(boolean side, int amount){

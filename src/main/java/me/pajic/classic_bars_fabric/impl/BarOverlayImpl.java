@@ -8,7 +8,6 @@ import me.pajic.classic_bars_fabric.config.ModConfig;
 import me.pajic.classic_bars_fabric.util.Color;
 import me.pajic.classic_bars_fabric.util.HealthEffect;
 import me.pajic.classic_bars_fabric.util.ModUtils;
-import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
@@ -48,11 +47,11 @@ public abstract class BarOverlayImpl implements BarOverlay {
     }
 
     @Override
-    public void render(GuiGraphics graphics, DeltaTracker deltaTracker, Player player, int screenWidth, int screenHeight, int vOffset) {
+    public void render(GuiGraphics graphics, Player player, int screenWidth, int screenHeight, int vOffset) {
         if (shouldRender(player)) {
             setupOverlayRenderState(true, false);
             bindBarTexture();
-            renderBar(graphics, deltaTracker, player, screenWidth, screenHeight, vOffset);
+            renderBar(graphics, player, screenWidth, screenHeight, vOffset);
             if (shouldRenderText()) {
                 renderText(graphics, player, screenWidth, screenHeight, vOffset);
             }
@@ -82,7 +81,7 @@ public abstract class BarOverlayImpl implements BarOverlay {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
     }
 
-    public abstract void renderBar(GuiGraphics graphics, DeltaTracker deltaTracker, Player player, int screenWidth, int screenHeight, int vOffset);
+    public abstract void renderBar(GuiGraphics graphics, Player player, int screenWidth, int screenHeight, int vOffset);
 
     protected boolean shouldFlash(Player player) {
         return false;
