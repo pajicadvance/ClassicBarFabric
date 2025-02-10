@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "classic_bars_fabric",
+  "version": "${version}",
+  "name": "Classic Bars Fabric",
+  "description": "Changes the Status Icons to Status Bars, ported to Fabric",
+  "authors": ["pajic", "Tfarecnim"],
+  "contact": {},
+  "license": "MIT",
+  "icon": "icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "me.pajic.classic_bars_fabric.ClientMain"
+    ],
+    "main": [
+      "me.pajic.classic_bars_fabric.Main"
+    ]
+  },
+  "mixins": [
+    "classic_bars_fabric.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}",
+    "yet_another_config_lib_v3": ">=${yacl_version}"
+  }
+}
