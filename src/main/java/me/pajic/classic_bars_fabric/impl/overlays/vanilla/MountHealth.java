@@ -94,8 +94,9 @@ public class MountHealth extends BarOverlayImpl {
     int yStart = height - vOffset;
     //heart background
     //ModUtils.drawTexturedModalRect(graphics,xStart, yStart, 16, 0, 9, 9);
+    graphics.blitSprite(ResourceLocation.withDefaultNamespace("hud/heart/container"), xStart, yStart, 9, 9);
     //heart
     //ModUtils.drawTexturedModalRect(graphics,xStart, yStart, 88, 9, 9, 9);
-    graphics.blitSprite(ResourceLocation.withDefaultNamespace("hud/vehicle_full"), xStart, yStart, 9, 9);
+    graphics.blitSprite(ResourceLocation.withDefaultNamespace("hud/heart/vehicle_full"), xStart, yStart, 9, 9);
   }
 }

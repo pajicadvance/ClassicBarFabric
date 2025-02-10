@@ -166,6 +166,7 @@ public class Hunger extends BarOverlayImpl {
     //Draw hunger icon
     //hunger background
     //ModUtils.drawTexturedModalRect(graphics,xStart, yStart, k6, 27, 9, 9);
+    graphics.blitSprite(ResourceLocation.withDefaultNamespace("hud/food_empty"), xStart, yStart, 9, 9);
     //hunger
     //ModUtils.drawTexturedModalRect(graphics,xStart, yStart, k5, 27, 9, 9);
     graphics.blitSprite(rl, xStart, yStart, 9, 9);

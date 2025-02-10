@@ -121,6 +121,7 @@ public class Absorption extends BarOverlayImpl {
         ResourceLocation rl = isHardcore ? ResourceLocation.withDefaultNamespace("hud/heart/absorbing_hardcore_full") : ResourceLocation.withDefaultNamespace("hud/heart/absorbing_full");
         //draw absorption icon
         //ModUtils.drawTexturedModalRect(graphics, xStart, yStart, 16, 9 * i5, 9, 9);
+        graphics.blitSprite(ResourceLocation.withDefaultNamespace("hud/heart/container"), xStart, yStart, 9, 9);
         //ModUtils.drawTexturedModalRect(graphics, xStart, yStart, 160, 0, 9, 9);
         graphics.blitSprite(rl, xStart, yStart, 9, 9);
     }

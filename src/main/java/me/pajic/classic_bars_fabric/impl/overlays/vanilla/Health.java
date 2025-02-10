@@ -139,6 +139,7 @@ public class Health extends BarOverlayImpl {
     //heart background
     Color.reset();
     //ModUtils.drawTexturedModalRect(graphics,xStart, yStart, 16, 9 * i5, 9, 9);
+    graphics.blitSprite(ResourceLocation.withDefaultNamespace("hud/heart/container"), xStart, yStart, 9, 9);
     //heart
     //ModUtils.drawTexturedModalRect(graphics,xStart, yStart, 36 + effect.i, 9 * i5, 9, 9);
     graphics.blitSprite(rl, xStart, yStart, 9, 9);
